@@ -1,12 +1,20 @@
 ---
-- name: threat_indicator
-  title: Threat Indicator
-  short: Fields that let you store threat indicators
+- name: threat
+  title: Threat
+  short: Fields that let you store threats
   description: >
-    Fields provide support for specifying information about threat 
-    indicators, and related matching patterns.
+    Fields provide support for specifying information about threats.
   type: group
   fields:
+
+  - name: indicator
+    title: Threat Indicator
+    short: Fields that let you store threat indicators
+    description: >
+      Fields provide support for specifying information about threat 
+      indicators, and related matching patterns.
+    type: group
+    fields:
 
     - name: type
       level: core
@@ -89,7 +97,7 @@
         The attack_pattern for this indicator is a STIX Pattern 
         as specified in STIX™ Version 2.0 Part 5 - STIX Patterning. 
       example: >
-        [source.ip = '198.51.100.1']
+        [source.ip = '198.51.100.1/32']
 
     - name: negate
       level: core
