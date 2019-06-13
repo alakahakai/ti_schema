@@ -1,0 +1,85 @@
+---
+- name: threat_indicator
+  title: Threat Indicator
+  short: Fields that let you store threat indicators
+  description: >
+    Fields provide support for specifying information about threat 
+    indicators, and related matching patterns.
+  type: group
+  fields:
+
+    - name: indicator_type
+      level: extended
+      type: keyword
+      description: >
+        Type of the threat indicator.
+      example: >
+        domain
+    - name: description
+      level: extended
+      type: text
+      description: >
+        Description of the threat indicator.
+
+    - name: valid_from
+      level: extended
+      type: date
+      description: >
+        The time from which this Indicator should be considered valuable 
+        intelligence.
+
+    - name: valid_until
+      level: extended
+      type: date
+      description: >
+        The time at which this Indicator should no longer be considered 
+        valuable intelligence. If the valid_until property is omitted, 
+        then there is no constraint on the latest time for which the 
+        indicator should be used. 
+
+    - name: severity
+      format: string
+      level: extended
+      type: keyword
+      description: >
+        Threat severity to which this indicator corresponds.
+      example: high
+
+    - name: confidence
+      level: extended
+      type: keyword
+      description: >
+        Confidence level to which this indicator corresponds.
+      example: high
+
+    - name: kill_chain_phases
+      format: string
+      level: extended
+      type: keyword
+      description: >
+        The kill chain phase(s) to which this indicator corresponds.
+
+    - name: mitre_tactics
+      format: string
+      level: extended
+      type: keyword
+      description: >
+        MITRE tactics to which this indicator corresponds.
+      example: Initial Access
+
+    - name: mitre_techniques
+      format: string
+      level: extended
+      type: keyword
+      description: >
+        MITRE techniques to which this indicator corresponds.
+      example: Drive-by Compromise
+
+    - name: pattern
+      level: extended
+      type: keyword
+      description: >
+        The detection pattern for this indicator is a STIX Pattern 
+        as specified in STIX™ Version 2.0 Part 5 - STIX Patterning. 
+      example: >
+        [source.ip = '198.51.100.1']
