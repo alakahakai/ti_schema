@@ -8,28 +8,35 @@
   type: group
   fields:
 
-    - name: indicator_type
-      level: extended
+    - name: type
+      level: core
       type: keyword
       description: >
         Type of the threat indicator.
       example: >
         domain
+
+    - name: version
+      level: core
+      type: keyword
+      description: >
+        Version of the threat indicator.
+
     - name: description
-      level: extended
+      level: core
       type: text
       description: >
         Description of the threat indicator.
 
     - name: valid_from
-      level: extended
+      level: core
       type: date
       description: >
         The time from which this Indicator should be considered valuable 
         intelligence.
 
     - name: valid_until
-      level: extended
+      level: core
       type: date
       description: >
         The time at which this Indicator should no longer be considered 
@@ -39,14 +46,14 @@
 
     - name: severity
       format: string
-      level: extended
+      level: core
       type: keyword
       description: >
         Threat severity to which this indicator corresponds.
       example: high
 
     - name: confidence
-      level: extended
+      level: core
       type: keyword
       description: >
         Confidence level to which this indicator corresponds.
@@ -75,11 +82,35 @@
         MITRE techniques to which this indicator corresponds.
       example: Drive-by Compromise
 
-    - name: pattern
-      level: extended
+    - name: attack_pattern
+      level: core
       type: keyword
       description: >
-        The detection pattern for this indicator is a STIX Pattern 
+        The attack_pattern for this indicator is a STIX Pattern 
         as specified in STIX™ Version 2.0 Part 5 - STIX Patterning. 
       example: >
         [source.ip = '198.51.100.1']
+
+    - name: negate
+      level: core
+      type: boolean
+      description: >
+        When set to true, it specifies the absence of the attack_pattern.
+    
+    - name: intrusion_set
+      level: extended
+      type: keyword
+      description: >
+        Name of the intrusion set if known.
+
+    - name: campaign
+      level: extended
+      type: keyword
+      description: >
+        Name of the attack campaign if known.
+
+    - name: threat_actor
+      level: extended
+      type: keyword
+      description: >
+        Name of the threat actor if known.
