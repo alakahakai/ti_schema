@@ -24,6 +24,12 @@
       example: >
         domain
 
+    - name: id
+      level: core
+      type: keyword
+      description: >
+        Identifier of the threat indicator.
+
     - name: version
       level: core
       type: keyword
@@ -35,6 +41,12 @@
       type: text
       description: >
         Description of the threat indicator.
+
+    - name: feed
+      level: core
+      type: text
+      description: >
+        Name of the threat feed.
 
     - name: valid_from
       level: core
@@ -74,7 +86,7 @@
       description: >
         The kill chain phase(s) to which this indicator corresponds.
 
-    - name: mitre_tactics
+    - name: mitre_tactic
       format: string
       level: extended
       type: keyword
@@ -82,7 +94,7 @@
         MITRE tactics to which this indicator corresponds.
       example: Initial Access
 
-    - name: mitre_techniques
+    - name: mitre_technique
       format: string
       level: extended
       type: keyword
@@ -122,3 +134,4 @@
       type: keyword
       description: >
         Name of the threat actor if known.
+
