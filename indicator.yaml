@@ -1,35 +1,62 @@
 ---
-- name: threat_indicator
-  title: Threat Indicator
-  short: Fields that let you store threat indicators
+- name: threat
+  title: Threat
+  short: Fields that let you store threats
   description: >
-    Fields provide support for specifying information about threat 
-    indicators, and related matching patterns.
+    Fields provide support for specifying information about threats.
   type: group
   fields:
 
-    - name: indicator_type
-      level: extended
+  - name: indicator
+    title: Threat Indicator
+    short: Fields that let you store threat indicators
+    description: >
+      Fields provide support for specifying information about threat 
+      indicators, and related matching patterns.
+    type: group
+    fields:
+
+    - name: type
+      level: core
       type: keyword
       description: >
         Type of the threat indicator.
       example: >
         domain
+
+    - name: id
+      level: core
+      type: keyword
+      description: >
+        Identifier of the threat indicator.
+
+    - name: version
+      level: core
+      type: keyword
+      description: >
+        Version of the threat indicator.
+
     - name: description
-      level: extended
+      level: core
       type: text
       description: >
         Description of the threat indicator.
 
+    - name: feed
+      level: core
+      type: text
+      description: >
+        Name of the threat feed.
+
     - name: valid_from
-      level: extended
+      level: core
       type: date
       description: >
         The time from which this Indicator should be considered valuable 
         intelligence.
 
     - name: valid_until
-      level: extended
+      level: core
       type: date
       description: >
         The time at which this Indicator should no longer be considered 
@@ -39,14 +66,14 @@
 
     - name: severity
       format: string
-      level: extended
+      level: core
       type: keyword
       description: >
         Threat severity to which this indicator corresponds.
       example: high
 
     - name: confidence
-      level: extended
+      level: core
       type: keyword
       description: >
         Confidence level to which this indicator corresponds.
@@ -59,7 +86,7 @@
       description: >
         The kill chain phase(s) to which this indicator corresponds.
 
-    - name: mitre_tactics
+    - name: mitre_tactic
       format: string
       level: extended
       type: keyword
@@ -67,7 +94,7 @@
         MITRE tactics to which this indicator corresponds.
       example: Initial Access
 
-    - name: mitre_techniques
+    - name: mitre_technique
       format: string
       level: extended
       type: keyword
@@ -75,11 +102,36 @@
         MITRE techniques to which this indicator corresponds.
       example: Drive-by Compromise
 
-    - name: pattern
+    - name: attack_pattern
+      level: core
+      type: keyword
+      description: >
+        The attack_pattern for this indicator is a STIX Pattern 
+        as specified in STIX™ Version 2.0 Part 5 - STIX Patterning. 
+      example: >
+        [source.ip = '198.51.100.1/32']
+
+    - name: negate
+      level: core
+      type: boolean
+      description: >
+        When set to true, it specifies the absence of the attack_pattern.
+    
+    - name: intrusion_set
       level: extended
       type: keyword
       description: >
-        The detection pattern for this indicator is a STIX Pattern 
-        as specified in STIX™ Version 2.0 Part 5 - STIX Patterning. 
-      example: >
-        [source.ip = '198.51.100.1']
+        Name of the intrusion set if known.
+
+    - name: campaign
+      level: extended
+      type: keyword
+      description: >
+        Name of the attack campaign if known.
+
+    - name: threat_actor
+      level: extended
+      type: keyword
+      description: >
+        Name of the threat actor if known.
+
